@@ -24,10 +24,22 @@ class Funcionario:
         nome_completo = self.nome.strip()
         nome_quebrado = nome_completo.split(' ')
         return nome_quebrado[-1]
+    
+    # Lembrete: No python usar _ no começo da função indica que é um método privado
+    def _eh_socio(self):
+        sobrenomes = ['Bragança', 'Windsor', 'Bourbon', 'Yamato', 'Al Saud', 'Khan', 'Tudor', 'Ptolomeu', 'Santos']
+        return (self._salario >= 100000) and (self.sobrenome() in sobrenomes)
+
+    def descrescimo_salario(self):
+        # Chamando função privada _eh_socio
+        if self._eh_socio():
+            descrescimo = self._salario * 0.1
+            self._salario = self._salario -descrescimo
 
     def calcular_bonus(self):
         valor = self._salario * 0.1
         if valor > 1000:
+            raise Exception('O salário é muito alto para receber um bônus')
             valor = 0
         return valor
 
