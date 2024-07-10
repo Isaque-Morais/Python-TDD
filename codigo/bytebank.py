@@ -1,5 +1,7 @@
 from datetime import date
 
+#teste
+
 class Funcionario:
     def __init__(self, nome, data_nascimento, salario):
         self._nome = nome
